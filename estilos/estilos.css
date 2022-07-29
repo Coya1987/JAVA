@@ -1,6 +1,19 @@
 .body{
     margin:0px;
 }
+.boton-ingresar{
+    background-color: light;
+    text-align: center;
+    transition-duration: 0.4s;
+    border-radius: 12px;
+    padding: 10px 24px;
+    right: 15px;
+    bottom: 10px;
+}
+.boton-ingresar:hover {
+    background-color: red;
+    color: white;
+} 
 .boton-pagar{
     background-color: light;
     text-align: center;
@@ -46,7 +59,7 @@
     padding: 10px 24px;
     border: none;
     right: 15px;
-    bottom: 10px;
+    bottom: 1px;
 
 }
 .boton-add:hover {
