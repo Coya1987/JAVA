@@ -73,16 +73,16 @@ console.log(porNombre);
 
 // uasuario agrega nuevo producto
 
-// let nombreNuevo = prompt("Ingrese el Nombre del Producto Nuevo");
-// let anioNuevo = Number(prompt("ingrese el Año del Producto Nuevo"));
-// let precioNuevo = Number(prompt("Ingrese el Precio del Producto Nuevo"));
-// let disponibilidadNuevo = confirm("El Nuevo Producto esta Disponible?");
+let nombreNuevo = prompt("Ingrese el Nombre del Producto Nuevo");
+let anioNuevo = Number(prompt("ingrese el Año del Producto Nuevo"));
+let precioNuevo = Number(prompt("Ingrese el Precio del Producto Nuevo"));
+let disponibilidadNuevo = confirm("El Nuevo Producto esta Disponible?");
 
-// let productoNuevo = new producto(nombreNuevo, anioNuevo, precioNuevo, disponibilidadNuevo);
+let productoNuevo = new producto(nombreNuevo, anioNuevo, precioNuevo, disponibilidadNuevo);
 
-// productos.push(productoNuevo);
+productos.push(productoNuevo);
 
-// console.table(productos);
+console.table(productos);
 
 // array + iva con map
 
