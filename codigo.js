@@ -1,15 +1,15 @@
-// function ingresePassword(){
-//     for(intentos=1;intentos<=3;intentos++){
-//         let contrasenia=prompt("Ingrese la Contraseña");
-//         if(contrasenia==1987){
-//             console.log("Bienvenido a la Tienda River");
-//             break;
-//         }else{
-//             console.log("La contraseña es Incorrecta")
-//         }
-//     }
-// }
-// ingresePassword();
+function ingresePassword(){
+    for(intentos=1;intentos<=3;intentos++){
+        let contrasenia=prompt("Ingrese la Contraseña");
+        if(contrasenia==1987){
+            console.log("Bienvenido a la Tienda River");
+            break;
+        }else{
+            console.log("La contraseña es Incorrecta")
+        }
+    }
+}
+ingresePassword();
 
 let total = 0;
 let camiseta1 = 14500;
