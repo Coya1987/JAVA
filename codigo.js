@@ -11,24 +11,22 @@
 // }
 // ingresePassword();
 
-// let total = 0;
-// //let producto1 = 14500;
-// //let producto2 = 12400;
+let total = 0;
+let camiseta1 = 14500;
+let camiseta2 = 12400;
 
-// function comprar(producto1,porducto2){
-//     total = producto1 + producto2
-//     console.log("la suma de $ "+producto1+" + $"+porducto2+" es igual $"+ total);
+function comprar(camiseta1,camiseta2){
+    total = camiseta1 + camiseta2
+    console.log("la suma de $ "+camiseta1+" + $"+camiseta2+" es igual $"+ total);
     
-// }
-// comprar(producto1,producto2);
+}
+comprar(camiseta1,camiseta2);
 
-// function comprarConCuotas(producto1){
-//     totalConCuotas= producto1/12;
-//     console.log("La camiseta Titular de River Plate te queda en 12 cuotas de $"+totalConCuotas);
-// }
-// comprarConCuotas(producto1);
-
-
+function comprarConCuotas(camiseta1){
+    totalConCuotas= camiseta1/12;
+    console.log("La camiseta Titular de River Plate te queda en 12 cuotas de $"+totalConCuotas);
+}
+comprarConCuotas(camiseta1);
 
 
 //array tienda
@@ -59,3 +57,43 @@ console.table(productos);
 
 console.log(producto7);
 producto7.mostrarProducto();
+
+//filter
+
+let disponibles = productos.filter(producto=> producto.disponibilidad==true);
+console.table(disponibles);
+
+let noDisponibles = productos.filter(producto=> producto.disponibilidad==false);
+console.table(noDisponibles);
+
+//find
+
+let porNombre = productos.find(producto=>producto.nombre=="Conjunto Invierno");
+console.log(porNombre);
+
+// uasuario agrega nuevo producto
+
+// let nombreNuevo = prompt("Ingrese el Nombre del Producto Nuevo");
+// let anioNuevo = Number(prompt("ingrese el Año del Producto Nuevo"));
+// let precioNuevo = Number(prompt("Ingrese el Precio del Producto Nuevo"));
+// let disponibilidadNuevo = confirm("El Nuevo Producto esta Disponible?");
+
+// let productoNuevo = new producto(nombreNuevo, anioNuevo, precioNuevo, disponibilidadNuevo);
+
+// productos.push(productoNuevo);
+
+// console.table(productos);
+
+// array + iva con map
+
+const productoIva = productos.map(producto =>{
+    return{
+        nombre:producto.nombre,
+        anio:producto.anio,
+        precio:producto.precio * 1.21,
+        disponibilidad:producto.disponibilidad
+    }
+});
+
+console.table(productoIva);
+
