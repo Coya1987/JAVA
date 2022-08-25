@@ -101,6 +101,10 @@
 
 let lista=document.getElementById("contenedor-pagina");
 let carrito = [];
+if(localStorage.getItem("carritoCompras")!= null){
+    carrito=JSON.parse(localStorage.getItem("carritoCompras"));
+}
+
 crearProductos();
 
 function crearProductos(){
@@ -126,6 +130,8 @@ function agregarAlCarrito(producto){
             <td>${producto.id}</td>
             <td>${producto.nombre}</td>
             <td>$${producto.precio}</td>
+            <button class="delete" scope="row">X</button>
         </tr> 
     `;
+    localStorage.setItem("carroCompras",JSON.stringify(carrito));
 }
