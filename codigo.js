@@ -123,6 +123,7 @@ function crearProductos(){
     });
 }
 function agregarAlCarrito(producto){
+
     carrito.push(producto);
     console.log(carrito);
     document.getElementById("items").innerHTML+=`
@@ -130,8 +131,24 @@ function agregarAlCarrito(producto){
             <td>${producto.id}</td>
             <td>${producto.nombre}</td>
             <td>$${producto.precio}</td>
-            <button class="delete" scope="row">X</button>
+            <td><button id="borrar${producto.id}" class="delete" scope="row"><i class="bi bi-trash"></i></button></td>
         </tr> 
     `;
+    let borrarProducto = document.getElementById(`borrar${producto.id}`);
+
+    borrarProducto.addEventListener(`click`, () => {
+        eliminarProductoCarrito(producto);
+        agregarAlCarrito();
+    });
+    
     localStorage.setItem("carroCompras",JSON.stringify(carrito));
 }
+
+function eliminarProductoCarrito(productosAEliminar){
+   const productosAMantener = carrito.filter(
+        (elemento)=>elemento.producto.id != productosAEliminar.producto.id);
+    carrito.length=0;
+    productosAMantener.forEach((producto) => carrito.push(producto));
+}
+
+

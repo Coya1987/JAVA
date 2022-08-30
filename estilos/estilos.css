@@ -62,3 +62,14 @@
     background-color: red;
     color: white;
 }
+.delete {
+    background-color: white;
+    text-align: center;
+    transition-duration: 0.4s;
+    border-radius: 12px;
+    padding: 5px 12px; 
+}
+.delete:hover {
+    background-color: red;
+    color: white;
+}
