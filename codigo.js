@@ -100,28 +100,28 @@
 // DOM
 
 let lista=document.getElementById("contenedor-pagina");
-let carrito = [];
-if(localStorage.getItem("carritoCompras")!= null){
-    carrito=JSON.parse(localStorage.getItem("carritoCompras"));
-}
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let productosJSON = [];
 
-crearProductos();
 
 function crearProductos(){
-    for(const producto of productos) {
+    for(const producto of productosJSON) {
         lista.innerHTML+=`<div class="contenedor-productos">
         <h3>${producto.nombre}</h3>
         <img src=${producto.foto} alt="">
         <h4>$${producto.precio}</h4>
         <button class="boton-add"id="btn${producto.id}">Comprar</button>
-    </div>`;
+        </div>`;
     }
-    productos.forEach(producto => {
+    productosJSON.forEach(producto => {
         document.getElementById(`btn${producto.id}`).addEventListener(`click`,function(){
             agregarAlCarrito(producto);
         })
     });
 }
+
+crearProductos();
+
 function agregarAlCarrito(producto){
 
     carrito.push(producto);
@@ -139,15 +139,10 @@ function agregarAlCarrito(producto){
             <td>${producto.id}</td>
             <td>${producto.nombre}</td>
             <td>$${producto.precio}</td>
-            <td><button id="borrar${producto.id}" class="delete" scope="row"><i class="bi bi-trash"></i></button></td>
+            <td><button onclick="borrar(${producto.id})" class="delete" scope="row"><i class="bi bi-trash"></i></button></td>
         </tr> 
     `;
-    let borrarProducto = document.getElementById(`borrar${producto.id}`);
-
-    borrarProducto.addEventListener(`click`, () => {
-        eliminarProductoCarrito(producto);
-        agregarAlCarrito();
-    });
+    
     
     localStorage.setItem("carroCompras",JSON.stringify(carrito));
 }
@@ -159,4 +154,11 @@ function eliminarProductoCarrito(productosAEliminar){
     productosAMantener.forEach((producto) => carrito.push(producto));
 }
 
-
+async function traerJSON() {
+    const URLJSON="productos.json"
+    const respuesta=await fetch(URLJSON)
+    const data=await respuesta.json()
+    productosJSON = data;
+    crearProductos();
+}
+traerJSON();
