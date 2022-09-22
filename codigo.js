@@ -98,11 +98,10 @@
 // console.table(productoIva);
 
 // DOM
-
+localStorage.clear();
 let lista=document.getElementById("contenedor-pagina");
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let productosJSON = [];
-
 
 function crearProductos(){
     for(const producto of productosJSON) {
@@ -138,7 +137,7 @@ function agregarAlCarrito(productoNuevo){
             icon: 'success',
             title: productoNuevo.nombre + ' Agregado Correctamente',
             showConfirmButton: false,
-            timer: 1400
+            timer: 1000
         });
         document.getElementById("items").innerHTML+=(`
         <tr>
@@ -156,8 +155,15 @@ function agregarAlCarrito(productoNuevo){
         console.log(posicion);
         carrito[posicion].cantidad += 1;
         document.getElementById(productoNuevo.id).innerHTML=carrito[posicion].cantidad;
+        Swal.fire({
+            position:'top-end',
+            icon: 'success',
+            title:productoNuevo.nombre + 'Agregado Correctamente',
+            showConfirmButton: false,
+            timer: 1000
+        });
     }
-    document.getElementById("gastoTotal").innerHTML=(`Total: $ ${calcularTotal()}`);
+    document.getElementById("gastoTotal").innerText=(`Total: $ ${calcularTotal()}`);
     localStorage.setItem("carrito",JSON.stringify(carrito));
 }
 
@@ -169,7 +175,7 @@ function calcularTotal () {
     return suma;
 }
 
-function eliminar(id){
+function borrar(id){
     let indice = carrito.findIndex(producto => producto.id==id);
     carrito.splice(indice,1);
     let fila = document.getElementById(`fila${id}`);
@@ -188,23 +194,4 @@ async function traerJSON() {
     crearProductos();
 }
 traerJSON();
-
-
-// let inputCantidad = document.getElementById(`cantidad-producto-${producto.id}`);
-// inputCantidad.addEventListener("change", (ev) => {
-    //    let nuevaCantidad = inputCantidad.value;
-    //    producto.cantidad = nuevaCantidad;
-    //    agregarAlCarrito ();
-
-    // });
-    
-    // localStorage.setItem("carroCompras",JSON.stringify(carrito));
-
-// function eliminarProductoCarrito(productosAEliminar){
-//    const productosAMantener = carrito.filter(
-//         (elemento)=>elemento.producto.id != productosAEliminar.producto.id);
-//     carrito.length=0;
-//     productosAMantener.forEach((producto) => carrito.push(producto));
-// }
-
 
